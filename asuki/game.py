@@ -3,19 +3,22 @@ import time
 
 import asuki.objects.gameobject
 import asuki.assets
+import asuki.player
 import pygame
 
 # Update and Render are separated
 keys_pressing = []
-game_objects = {}
 running = True
 surface: pygame.Surface
+
+player = asuki.player.PlayerSprite()
+sprites = pygame.sprite.Group()
 
 
 def init():
     global surface
 
-    game_objects["test"] = asuki.objects.gameobject.GameObject(0, 0, 32, 32, asuki.assets.ICON)
+    sprites.add(player)
 
     pygame.init()
     pygame.font.init()
@@ -34,10 +37,12 @@ def loop():
 
     update_loop()
 
+    thread.join(0)
     pygame.display.quit()
 
 
 def render_loop():
+    clock = pygame.time.Clock()
     fps = 0
     fps_buffer = 0
     timer = get_time()
@@ -50,10 +55,11 @@ def render_loop():
             fps = fps_buffer
             fps_buffer = 0
             timer = get_time()
-        r = pygame.font.SysFont("assets/font/unifont-15.0.01.ttf", 16).render(f"FPS: {fps}", False, (255, 255, 255))
+        r = asuki.assets.UNIFONT_14.render(f"FPS: {fps}", False, (255, 255, 255))
         surface.blit(r, (0, 0))
         pygame.display.update()
         pygame.display.flip()
+        clock.tick(30)
 
 
 def update_loop():
@@ -62,7 +68,7 @@ def update_loop():
     while running:
         update()
         print(keys_pressing)
-        clock.tick(20)
+        clock.tick(30)
 
 
 def update():
@@ -80,13 +86,13 @@ def update():
             if key in keys_pressing:
                 keys_pressing.remove(event.key)
 
+    sprites.update()
+
 
 def render():
     global surface
 
-    surface.blit(asuki.assets.ICON, (0, 0))
-    # for obj in game_objects:
-    #     surface.blit(obj.image, (0, 0), (32, 32))
+    sprites.draw(surface)
 
 
 def get_time() -> int:
