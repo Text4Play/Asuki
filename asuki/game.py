@@ -27,6 +27,7 @@ def init():
     pygame.display.init()
     pygame.display.set_caption("Game")
     pygame.display.set_icon(asuki.assets.ICON)
+    pygame.mouse.set_visible(False)
 
 
 def loop():
@@ -48,7 +49,7 @@ def render_loop():
     timer = get_time()
     global running
     while running:
-        surface.fill((0, 0, 0))
+        surface.fill((127, 0, 0))
         render()
         fps_buffer += 1
         if get_time() - timer >= 1000:
@@ -59,7 +60,7 @@ def render_loop():
         surface.blit(r, (0, 0))
         pygame.display.update()
         pygame.display.flip()
-        clock.tick(30)
+        # clock.tick(30)
 
 
 def update_loop():
@@ -67,7 +68,7 @@ def update_loop():
 
     while running:
         update()
-        print(keys_pressing)
+        # print(keys_pressing)
         clock.tick(30)
 
 
@@ -83,8 +84,10 @@ def update():
             keys_pressing.append(key)
         if event.type == pygame.KEYUP:
             key = event.key
+            if key == pygame.K_F4:
+                pygame.display.toggle_fullscreen()
             if key in keys_pressing:
-                keys_pressing.remove(event.key)
+                keys_pressing.remove(key)
 
     sprites.update()
 

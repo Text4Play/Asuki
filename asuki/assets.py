@@ -8,11 +8,15 @@ def load_image_with_alpha(path):
 
 
 ICON = load_image_with_alpha("assets/textures/doge.png")
-PLAYER = load_image_with_alpha("assets/textures/player/player.png")
-PLAYER_N = load_image_with_alpha("assets/textures/player/player_n.png")
-PLAYER_S = load_image_with_alpha("assets/textures/player/player_s.png")
-PLAYER_W = load_image_with_alpha("assets/textures/player/player_w.png")
-PLAYER_E = load_image_with_alpha("assets/textures/player/player_e.png")
+PLAYER = load_image_with_alpha("assets/textures/player_new/player.png")
+PLAYER_N_0 = load_image_with_alpha("assets/textures/player_new/player_n_0.png")
+PLAYER_N_1 = load_image_with_alpha("assets/textures/player_new/player_n_1.png")
+PLAYER_S_0 = load_image_with_alpha("assets/textures/player_new/player_s_0.png")
+PLAYER_S_1 = load_image_with_alpha("assets/textures/player_new/player_s_1.png")
+PLAYER_W_0 = load_image_with_alpha("assets/textures/player_new/player_w_0.png")
+PLAYER_W_1 = load_image_with_alpha("assets/textures/player_new/player_w_1.png")
+PLAYER_E_0 = load_image_with_alpha("assets/textures/player_new/player_e_0.png")
+PLAYER_E_1 = load_image_with_alpha("assets/textures/player_new/player_e_1.png")
 
 pygame.font.init()
 UNIFONT_14 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 14)
