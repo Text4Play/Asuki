@@ -7,7 +7,7 @@ def load_image_with_alpha(path):
     return buffer
 
 
-ICON = load_image_with_alpha("assets/textures/doge.png")
+ICON = load_image_with_alpha("assets/textures/icon.png")
 PLAYER = load_image_with_alpha("assets/textures/player_new/player.png")
 PLAYER_N_0 = load_image_with_alpha("assets/textures/player_new/player_n_0.png")
 PLAYER_N_1 = load_image_with_alpha("assets/textures/player_new/player_n_1.png")
