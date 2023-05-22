@@ -1,4 +1,4 @@
-# Main entry of the objects
+# Main entry of the game
 from asuki import game
 
 
