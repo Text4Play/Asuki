@@ -60,7 +60,7 @@ def render_loop():
         surface.blit(r, (0, 0))
         pygame.display.update()
         pygame.display.flip()
-        # clock.tick(30)
+        # clock.tick.py(30)
 
 
 def update_loop():
