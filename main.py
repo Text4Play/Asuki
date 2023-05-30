@@ -15,6 +15,7 @@ print("Copyright (C) 2023 岚风Arrokoth All Rights Reserved.")
 
 
 def main():
+    game.assets.load()
     game.run()
 
 

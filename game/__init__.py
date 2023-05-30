@@ -10,17 +10,19 @@ import pygame.display
 import game.assets
 import game.tick
 import game.render
+import game.room
 
 
-WINDOW = pygame.display.set_mode((640, 480))
+SURFACE = pygame.display.set_mode((640, 480))
 CLOCK = pygame.time.Clock()
 
 running = True
+key_pressing = []
+room = game.room.Room(0)
 
 
 def run():
     pygame.init()
-    assets.load()
 
     pygame.display.set_caption("Asuki")
     pygame.mouse.set_visible(False)

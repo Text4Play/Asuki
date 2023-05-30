@@ -7,6 +7,12 @@
 # @File     : &{NAME}.py
 import pygame.display
 
+import game.player
+
 
 def render():
-    pass
+    game.SURFACE.fill((0, 0, 0))
+
+    game.SURFACE.blit(game.room.color_map, (0, 0))
+
+    game.player.player_render()
