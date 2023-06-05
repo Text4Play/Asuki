@@ -12,16 +12,24 @@ import game.tick
 import game.render
 import game.room
 
-
-SURFACE = pygame.display.set_mode((640, 480))
+SCENE_SIZE = (640, 480)
+SURFACE = pygame.display.set_mode(SCENE_SIZE)
 CLOCK = pygame.time.Clock()
+ROOMS = []
+
+game.room.register(0, {
+    0: lambda: print(game.room.switch_room(0)),
+    1: lambda: print("1145141919810")
+})
+game.room.register(1, {})
 
 running = True
 key_pressing = []
-room = game.room.Room(0)
+current_room = game.room.REGISTERED_ROOMS[0]
 
 
 def run():
+    print("Initializing Pygame...")
     pygame.init()
 
     pygame.display.set_caption("Asuki")
@@ -42,3 +50,6 @@ def loop():
 
         CLOCK.tick(30)
 
+
+def change_room(target_room, pos):
+    print(pos[0], pos[1])

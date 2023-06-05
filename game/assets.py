@@ -9,12 +9,9 @@
 import pygame
 
 
-ASSETS = {}
-
-
 def load_image_with_alpha(path):
     buffer = pygame.image.load(path)
-    buffer.set_alpha(256)
+    buffer.set_alpha(255)
     return buffer
 
 
@@ -27,8 +24,3 @@ PLAYER_W_0 = load_image_with_alpha("assets/textures/player_new/player_w_0.png")
 PLAYER_W_1 = load_image_with_alpha("assets/textures/player_new/player_w_1.png")
 PLAYER_E_0 = load_image_with_alpha("assets/textures/player_new/player_e_0.png")
 PLAYER_E_1 = load_image_with_alpha("assets/textures/player_new/player_e_1.png")
-
-
-def load():
-    print("Loading assets...")
-    ASSETS["ICON"] = pygame.image.load("assets/icon.png")

@@ -17,6 +17,15 @@ def tick():
             game.running = False
         if event.type == pygame.KEYDOWN:
             game.key_pressing.append(event.key)
+            game.player.INSTANCE.key_down(event.key)
+            if event.key == pygame.K_F1:
+                game.render.debug_mode = 1
+            elif event.key == pygame.K_F2:
+                game.render.debug_mode = 2
+            elif event.key == pygame.K_F3:
+                game.render.debug_mode = 3
+            elif event.key == pygame.K_F4:
+                game.render.debug_mode = 0
         if event.type == pygame.KEYUP:
             if event.key in game.key_pressing:
                 game.key_pressing.remove(event.key)
