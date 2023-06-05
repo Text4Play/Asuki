@@ -92,11 +92,12 @@ class PlayerSprite(pygame.sprite.Sprite):
             self.last_move_time = 0
 
         self.rect.x += speed * direction_x
-        self.rect.y += speed * direction_y
+        if self.is_blocked():
+            self.rect.x -= speed * direction_x
 
-        while self.is_blocked() and True:
-            self.rect.x -= direction_x
-            self.rect.y -= direction_y
+        self.rect.y += speed * direction_y
+        if self.is_blocked():
+            self.rect.y -= speed * direction_y
 
     def update(self, *args, **kwargs):
         if self.session is None:

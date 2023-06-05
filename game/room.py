@@ -8,12 +8,15 @@
 import pygame.image
 
 import game.assets
+import game.player
 
 REGISTERED_ROOMS = {}
 
 
-def switch_room(index):
-    game.room = REGISTERED_ROOMS[index]
+def switch_room(index, pos):
+    game.player.INSTANCE.rect.x = pos[0]
+    game.player.INSTANCE.rect.y = pos[1]
+    game.current_room = REGISTERED_ROOMS[index]
 
 
 class Room(object):

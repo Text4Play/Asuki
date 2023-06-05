@@ -18,10 +18,13 @@ CLOCK = pygame.time.Clock()
 ROOMS = []
 
 game.room.register(0, {
-    0: lambda: print(game.room.switch_room(0)),
+    0: lambda: game.room.switch_room(1, (1, 1)),
     1: lambda: print("1145141919810")
 })
-game.room.register(1, {})
+game.room.register(1, {
+    0: lambda: game.room.switch_room(0, (1, 1)),
+    1: lambda: print("1145141919810")
+})
 
 running = True
 key_pressing = []
