@@ -13,8 +13,8 @@ import game
 
 
 def is_blocked(x, y, w, h):
-    def is_hit(x, y):
-        return game.current_room.bound_map.get_at((x, y))[0] == 255
+    def is_hit(x0, y0):
+        return game.current_room.bound_map.get_at((x0, y0))[0] == 255
 
     if x < 1 or x + w + 1 > game.current_room.bound_map.get_size()[0] or y < 1 or y + h + 1 > \
             game.current_room.bound_map.get_size()[1]:
@@ -37,6 +37,7 @@ class PlayerSprite(pygame.sprite.Sprite):
         self.talking = False
         self.session = None
         self.session_index = 0
+        self.talking_text = ""
 
     def is_blocked(self):
         return is_blocked(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
@@ -105,16 +106,45 @@ class PlayerSprite(pygame.sprite.Sprite):
 
         if not self.talking:
             self.movement()
+        
+        game.current_room.call_move_event(self.rect)
 
     def key_down(self, key):
         if not self.talking:
             if key == pygame.K_z:
                 game.current_room.call_event(self.rect)
         else:
-            if len(self.session) < self.session_index:
-                self.talking = False
+            if key == pygame.K_z:
+                if len(self.session) <= self.session_index:
+                    self.talking = False
+                else:
+                    self.dialog()
+                    self.session_index += 1
+    
+    def fire_dialog(self, index):
+        self.talking = True
+        self.session = game.dialog.read(index)
+        self.session_index = 0
+        self.dialog()
+        self.session_index += 1
+    
+    def dialog(self):
+        name = self.session[self.session_index][0]
+        text = self.session[self.session_index][1]
+        self.talking_text = f"{name}\\n{text}"
+    
+    def render_dialog(self, surface):
+        img = pygame.transform.scale(game.assets.DIALOG_BG, (560, 175))
+        padding = (game.SCENE_SIZE[0] - img.get_width()) / 2
+        surface.blit(img, (int(padding), int(game.SCENE_SIZE[1] - img.get_height() - padding)))
+        j = 0
+        for i in self.talking_text.split("\\n"):
+            if j == 0:
+                text = game.assets.UNIFONT_24.render(i, True, pygame.color.Color(255, 255, 255))
             else:
-                self.session_index += 1
+                text = game.assets.UNIFONT_20.render(i, True, pygame.color.Color(255, 255, 255))
+            surface.blit(text, (int(padding) + 16 + min(1, j) * 16, int(game.SCENE_SIZE[1] - img.get_height() - padding) + 12 + min(1, j) * 12 + (j * 20)))
+            j += 1
 
 
 INSTANCE = PlayerSprite()
@@ -128,3 +158,5 @@ def player_tick():
 
 def player_render():
     GROUP.draw(game.SURFACE)
+    if INSTANCE.talking:
+        INSTANCE.render_dialog(game.SURFACE)

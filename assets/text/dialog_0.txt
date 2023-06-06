@@ -1,0 +1,6 @@
+You:Hello World!
+You:I'm Arrokoth, this is the Dialog test!
+You:You may ask: Hey, what a kind of game is it?
+You:Well
+You:idk
+You:btw this should be or is a super long text written by\nme and it must be to long to render
