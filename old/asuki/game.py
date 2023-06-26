@@ -68,7 +68,6 @@ def update_loop():
 
     while running:
         update()
-        # print(keys_pressing)
         clock.tick(30)
 
 

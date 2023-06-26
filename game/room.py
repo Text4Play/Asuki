@@ -5,11 +5,11 @@
 # 
 # @Author   : 岚风Arrokoth
 # @File     : &{NAME}.py
+
 import pygame.image
 
 import game.assets
 import game.player
-
 
 REGISTERED_ROOMS = {}
 
@@ -59,7 +59,7 @@ def register_event(index, events):
         room = REGISTERED_ROOMS[index]
     except:
         room = Room(index)
-    
+
     for e in events.keys():
         room.add_event(e, events[e])
     REGISTERED_ROOMS[index] = room
@@ -71,7 +71,7 @@ def register_walk_event(index, events):
         room = REGISTERED_ROOMS[index]
     except:
         room = Room(index)
-    
+
     for e in events.keys():
         room.add_walk_event(e, events[e])
     REGISTERED_ROOMS[index] = room

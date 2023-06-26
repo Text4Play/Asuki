@@ -5,6 +5,7 @@
 # 
 # @Author   : 岚风Arrokoth
 # @File     : &{NAME}.py
+
 import time
 
 import pygame.sprite
@@ -13,8 +14,8 @@ import game
 
 
 def is_blocked(x, y, w, h):
-    def is_hit(x0, y0):
-        return game.current_room.bound_map.get_at((x0, y0))[0] == 255
+    def is_hit(x, y):
+        return game.current_room.bound_map.get_at((x, y))[0] == 255
 
     if x < 1 or x + w + 1 > game.current_room.bound_map.get_size()[0] or y < 1 or y + h + 1 > \
             game.current_room.bound_map.get_size()[1]:
@@ -27,7 +28,7 @@ class PlayerSprite(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
 
-        self.size = (32, 64)
+        self.size = (48, 96)
         self.speed = 4
         self.image = pygame.transform.scale(game.assets.PLAYER, self.size)
         self.rect = self.image.get_rect()
@@ -139,11 +140,12 @@ class PlayerSprite(pygame.sprite.Sprite):
         surface.blit(img, (int(padding), int(game.SCENE_SIZE[1] - img.get_height() - padding)))
         j = 0
         for i in self.talking_text.split("\\n"):
+            text = None
             if j == 0:
                 text = game.assets.UNIFONT_24.render(i, True, pygame.color.Color(255, 255, 255))
             else:
                 text = game.assets.UNIFONT_20.render(i, True, pygame.color.Color(255, 255, 255))
-            surface.blit(text, (int(padding) + 16 + min(1, j) * 16, int(game.SCENE_SIZE[1] - img.get_height() - padding) + 12 + min(1, j) * 12 + (j * 20)))
+            surface.blit(text, (int(padding) + 16 + min(1, j) * 12, int(game.SCENE_SIZE[1] - img.get_height() - padding) + 12 + min(1, j) * 8 + (j * 20)))
             j += 1
 
 

@@ -5,6 +5,7 @@
 # 
 # @Author   : 岚风Arrokoth
 # @File     : &{NAME}.py
+
 import pygame.display
 
 import game
