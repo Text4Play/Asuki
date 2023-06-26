@@ -6,14 +6,13 @@
 # @Author   : 岚风Arrokoth
 # @File     : &{NAME}.py
 
-import pygame.display
-
 import game.player
 
 
 debug_mode = 0
 
 
+# Zeichnet auf dem Bildschirm bzw. Framebuffer
 def render():
     game.SURFACE.fill((0, 0, 0))
 

@@ -12,6 +12,7 @@ import game
 import game.player
 
 
+# Update funktion
 def tick():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

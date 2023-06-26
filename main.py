@@ -14,6 +14,7 @@ print("This program is written by 岚风Arrokoth")
 print("Copyright (C) 2023 岚风Arrokoth All Rights Reserved.")
 
 
+# Entry
 def main():
     game.run()
 

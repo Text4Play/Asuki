@@ -20,6 +20,7 @@ SURFACE = pygame.display.set_mode(SCENE_SIZE)
 CLOCK = pygame.time.Clock()
 ROOMS = []
 
+# Raum events Registrieren
 game.room.register_event(0, {
     0: lambda: game.player.INSTANCE.fire_dialog(0),
     1: lambda: game.player.INSTANCE.fire_dialog(1),
@@ -28,8 +29,7 @@ game.room.register_walk_event(0, {
     0: lambda: game.room.switch_room(1, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
 })
 game.room.register_event(1, {
-    0: lambda: print("1145141919810"),
-    1: lambda: print("1145141919810")
+    0: lambda: game.player.INSTANCE.fire_dialog(1)
 })
 game.room.register_walk_event(1, {
     0: lambda: game.room.switch_room(0, (SCENE_SIZE[0] - 16 - game.player.INSTANCE.rect.width, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2)),
@@ -47,11 +47,13 @@ game.room.register_walk_event(2, {
     1: lambda: game.room.switch_room(1, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
 })
 
+# Ein paar variable
 running = True
 key_pressing = []
 current_room = game.room.REGISTERED_ROOMS[0]
 
 
+# Initialize
 def run():
     print("Initializing Pygame...")
     pygame.init()
@@ -64,6 +66,7 @@ def run():
     pygame.display.quit()
 
 
+# Main loop
 def loop():
     while running:
         tick.tick()

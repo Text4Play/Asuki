@@ -14,12 +14,14 @@ import game.player
 REGISTERED_ROOMS = {}
 
 
+# Hier kann man den raum aehndern
 def switch_room(index, pos):
     game.player.INSTANCE.rect.x = pos[0]
     game.player.INSTANCE.rect.y = pos[1]
     game.current_room = REGISTERED_ROOMS[index]
 
 
+# Raum klasse
 class Room(object):
     def __init__(self, index):
         self.color_map = pygame.transform.scale(
@@ -33,6 +35,7 @@ class Room(object):
         self.events = []
         self.walk_events = []
 
+    # Event system
     def add_event(self, index, event):
         while len(self.events) - 1 < index:
             self.events.append(None)
@@ -54,6 +57,7 @@ class Room(object):
             self.walk_events[color[1]]()
 
 
+# Event system
 def register_event(index, events):
     try:
         room = REGISTERED_ROOMS[index]

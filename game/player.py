@@ -13,6 +13,7 @@ import pygame.sprite
 import game
 
 
+# Hit box
 def is_blocked(x, y, w, h):
     def is_hit(x, y):
         return game.current_room.bound_map.get_at((x, y))[0] == 255
@@ -24,6 +25,7 @@ def is_blocked(x, y, w, h):
     return is_hit(x, y) or is_hit(x + w, y) or is_hit(x, y + h) or is_hit(x + w, y + h)
 
 
+# Spieler klasse
 class PlayerSprite(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -43,6 +45,7 @@ class PlayerSprite(pygame.sprite.Sprite):
     def is_blocked(self):
         return is_blocked(self.rect.x, self.rect.y, self.rect.width, self.rect.height)
 
+    # Bewegung
     def movement(self):
         speed = self.speed
 
@@ -101,6 +104,7 @@ class PlayerSprite(pygame.sprite.Sprite):
         if self.is_blocked():
             self.rect.y -= speed * direction_y
 
+    # Update
     def update(self, *args, **kwargs):
         if self.session is None:
             self.talking = False
@@ -110,6 +114,7 @@ class PlayerSprite(pygame.sprite.Sprite):
         
         game.current_room.call_move_event(self.rect)
 
+    # Event calling
     def key_down(self, key):
         if not self.talking:
             if key == pygame.K_z:
@@ -149,6 +154,7 @@ class PlayerSprite(pygame.sprite.Sprite):
             j += 1
 
 
+# Ein paar variable
 INSTANCE = PlayerSprite()
 GROUP = pygame.sprite.Group()
 GROUP.add(INSTANCE)
