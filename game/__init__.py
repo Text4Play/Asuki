@@ -28,6 +28,7 @@ game.room.register_event(0, {
 game.room.register_walk_event(0, {
     0: lambda: game.room.switch_room(1, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
 })
+
 game.room.register_event(1, {
     0: lambda: game.player.INSTANCE.fire_dialog(1)
 })
@@ -37,14 +38,28 @@ game.room.register_walk_event(1, {
 })
 game.room.register_event(2, {
     0: lambda: {
-        game.player.INSTANCE.fire_dialog(0),
-        print("1145141919810")
+        game.player.INSTANCE.fire_dialog(2)
     },
-    1: lambda: print("114514")
 })
 game.room.register_walk_event(2, {
-    0: lambda: game.room.switch_room(1, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2)),
-    1: lambda: game.room.switch_room(1, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
+    0: lambda: game.room.switch_room(1, (SCENE_SIZE[0] - 16 - game.player.INSTANCE.rect.width, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2 - 96)),
+    1: lambda: game.room.switch_room(3, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2)),
+    2: lambda: game.room.switch_room(4, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
+})
+
+game.room.register_event(3, {
+    0: lambda: game.player.INSTANCE.fire_dialog(3),
+    1: lambda: game.player.INSTANCE.fire_dialog(4)
+})
+game.room.register_walk_event(3, {
+    0: lambda: game.room.switch_room(2, (SCENE_SIZE[0] / 2 - game.player.INSTANCE.rect.width / 2, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2 - 96))
+})
+
+game.room.register_event(4, {
+})
+game.room.register_walk_event(4, {
+    0: lambda: game.room.switch_room(2, (SCENE_SIZE[0] - 16 - game.player.INSTANCE.rect.width, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2)),
+    1: lambda: game.room.switch_room(5, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
 })
 
 # Ein paar variable
