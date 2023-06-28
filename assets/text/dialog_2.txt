@@ -1,2 +1,3 @@
 :A Carpet.
-:This image looks just like a toothpaste advertise
+:"Infel CORE"
+:Is this a toothpaste ad?

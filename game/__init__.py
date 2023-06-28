@@ -62,6 +62,13 @@ game.room.register_walk_event(4, {
     1: lambda: game.room.switch_room(5, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
 })
 
+game.room.register_event(5, {
+})
+game.room.register_walk_event(5, {
+    0: lambda: game.room.switch_room(4, (SCENE_SIZE[0] - 16 - game.player.INSTANCE.rect.width, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2)),
+    1: lambda: game.room.switch_room(6, (16, SCENE_SIZE[1] / 2 - game.player.INSTANCE.rect.height / 2))
+})
+
 # Ein paar variable
 running = True
 key_pressing = []
