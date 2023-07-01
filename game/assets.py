@@ -1,9 +1,9 @@
 #!/user/bin/python3
 # _*_ coding: utf-8 _*_
 # 
-# Copyright (C) 2023 岚风Arrokoth All Rights Reserved.
+# Copyright (C) 2023 Ruifeng Du All Rights Reserved.
 # 
-# @Author   : 岚风Arrokoth
+# @Author   : Ruifeng Du
 # @File     : &{NAME}.py
 
 import pygame
@@ -14,10 +14,14 @@ def load_image_with_alpha(path):
     buffer.set_alpha(255)
     return buffer
 
+# Die Ressourcen
 pygame.font.init()
+UNIFONT_12 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 12)
+UNIFONT_14 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 14)
 UNIFONT_16 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 16)
 UNIFONT_20 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 20)
 UNIFONT_24 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 24)
+UNIFONT_32 = pygame.font.Font("assets/font/unifont-15.0.01.ttf", 32)
 
 PLAYER_RES_ROOT = "assets/textures/boc/"
 PLAYER = load_image_with_alpha(f"{PLAYER_RES_ROOT}player.png")

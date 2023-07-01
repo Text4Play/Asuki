@@ -1,9 +1,9 @@
 #!/user/bin/python3
 # _*_ coding: utf-8 _*_
 # 
-# Copyright (C) 2023 岚风Arrokoth All Rights Reserved.
+# Copyright (C) 2023 Ruifeng Du All Rights Reserved.
 # 
-# @Author   : 岚风Arrokoth
+# @Author   : Ruifeng Du
 # @File     : &{NAME}.py
 
 import time
@@ -127,6 +127,16 @@ class PlayerSprite(pygame.sprite.Sprite):
                     self.dialog()
                     self.session_index += 1
     
+    def key_up(self, key):
+        if key == pygame.K_UP:
+            self.image = pygame.transform.scale(game.assets.PLAYER_N_0, self.size)
+        if key == pygame.K_DOWN:
+            self.image = pygame.transform.scale(game.assets.PLAYER_S_0, self.size)
+        if key == pygame.K_LEFT:
+            self.image = pygame.transform.scale(game.assets.PLAYER_W_0, self.size)
+        if key == pygame.K_RIGHT:
+            self.image = pygame.transform.scale(game.assets.PLAYER_E_0, self.size)
+    
     def fire_dialog(self, index):
         self.talking = True
         self.session = game.dialog.read(index)
@@ -160,6 +170,7 @@ GROUP = pygame.sprite.Group()
 GROUP.add(INSTANCE)
 
 
+# Update
 def player_tick():
     INSTANCE.update()
 

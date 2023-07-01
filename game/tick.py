@@ -1,9 +1,9 @@
 #!/user/bin/python3
 # _*_ coding: utf-8 _*_
 # 
-# Copyright (C) 2023 岚风Arrokoth All Rights Reserved.
+# Copyright (C) 2023 Ruifeng Du All Rights Reserved.
 # 
-# @Author   : 岚风Arrokoth
+# @Author   : Ruifeng Du
 # @File     : &{NAME}.py
 
 import pygame.display
@@ -14,6 +14,7 @@ import game.player
 
 # Update funktion
 def tick():
+    # Key Event
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game.running = False
@@ -30,6 +31,8 @@ def tick():
                 game.render.debug_mode = 0
         if event.type == pygame.KEYUP:
             if event.key in game.key_pressing:
+                game.player.INSTANCE.key_up(event.key)
                 game.key_pressing.remove(event.key)
 
+    # Spieler
     game.player.player_tick()
